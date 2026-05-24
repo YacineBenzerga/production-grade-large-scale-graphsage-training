@@ -1,0 +1,8 @@
+hidden_channels: 256
+num_layers: 2
+dropout: 0.3
+lr:1e-4
+weight_decay: 1e-4
+asl_gamma_neg: 4.0
+asl_gamma_pos: 1.0
+asl_clip:0.05
