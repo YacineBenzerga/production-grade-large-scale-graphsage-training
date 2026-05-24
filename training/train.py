@@ -2,6 +2,7 @@ import os
 import hydra
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
+from pytorch_lightning.loggers import MLFlowLogger
 from core.data_module import AmazonProductsDataModule
 from core.system_module import GNNProductionSystem
 import torch
@@ -28,6 +29,11 @@ def main(cfg):
         save_top_k=1
         )
     
+    mlflow_logger = MLFlowLogger(
+        experiment_name=cfg.tracking.experiment_name,
+        tracking_uri=cfg.tracking.connection_string,
+    )   
+    
     early_stop_callback = EarlyStopping(monitor=cfg.early_stopping.monitor, 
                                         patience=cfg.early_stopping.patience,
                                         mode=cfg.early_stopping.mode)
@@ -35,6 +41,7 @@ def main(cfg):
         max_epochs=20,
         accelerator="gpu" if torch.cuda.is_available() else "cpu",
         devices=1,
+        logger=mlflow_logger,
         callbacks=[checkpoint_callback, early_stop_callback],
         precision="16-mixed"
     )
