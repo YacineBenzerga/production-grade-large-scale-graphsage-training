@@ -1,0 +1,5 @@
+dataset_name: "AmazonProducts"
+root_dir: "./data"
+batch_size: 1024
+num_workers: 8
+num_neighbors: [15,10]
