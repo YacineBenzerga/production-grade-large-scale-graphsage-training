@@ -1,0 +1,22 @@
+defaults:
+  - model: sage_model
+  - _self_
+
+data:
+  root_dir: "./data/AmazonProducts"
+  batch_size: 1024
+  sizes: [15, 10]
+  num_workers: 4
+
+trainer:
+  max_epochs: 10
+  accelerator: "gpu"
+  devices: 1
+  log_every_n_steps: 10
+
+mlflow:
+  tracking_uri: "sqlite:////shared_workspace/mlflow_production.db"
+  experiment_name: "GraphSAGE_Large_Scale"
+  run_name_prefix: "SAGE_Amazon_Prod"
+
+seed: 42
