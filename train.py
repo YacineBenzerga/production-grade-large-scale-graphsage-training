@@ -5,8 +5,8 @@ from omegaconf import DictConfig, OmegaConf
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from pytorch_lightning.loggers import MLFlowLogger
-from src.datamodule import AmazonProductsDataModule
-from src.systemodule import GraphSAGELightningEngine
+from src.data_module import AmazonProductsDataModule
+from src.system_module import GraphSAGELightningEngine
 
 @hydra.main(config_path="config", config_name="config", version_base="1.3")
 def main(cfg: DictConfig):
