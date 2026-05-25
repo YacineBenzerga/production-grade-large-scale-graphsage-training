@@ -4,8 +4,8 @@ import mlflow
 from omegaconf import DictConfig
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import MLFlowLogger
-from src.datamodule import AmazonProductsDataModule
-from src.systemodule import GraphSAGELightningEngine
+from src.data_module import AmazonProductsDataModule
+from src.system_module import GraphSAGELightningEngine
 
 def objective(trial: optuna.Trial, cfg: DictConfig) -> float:
     cfg.model.lr = trial.suggest_float("lr", 1e-4, 1e-2, log=True)
