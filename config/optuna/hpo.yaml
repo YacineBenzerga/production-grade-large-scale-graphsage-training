@@ -1,0 +1,4 @@
+n_trials: 20
+timeout: 3600
+storage: "sqlite:///optuna_study.db"
+study_name: "graphsage_amazon_optimization"
