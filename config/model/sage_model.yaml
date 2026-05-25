@@ -1,0 +1,11 @@
+in_channels: 200
+hidden_channels: 256
+out_channels: 107
+num_layers: 2
+lr: 0.001
+dropout: 0.5
+
+# Asymmetric loss configurations for balancing unbalanced labels
+gamma_neg: 4
+gamma_pos: 1
+clip: 0.05
