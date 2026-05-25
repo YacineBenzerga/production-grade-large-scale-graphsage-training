@@ -1,0 +1,35 @@
+services:
+  mlflow_ui:
+    image: large_scale_gnn:latest  
+    container_name: mlflow_ui_server
+    ports:
+      - "5050:5000"
+    volumes:
+      - db_data:/shared_workspace
+    entrypoint: mlflow server --backend-store-uri sqlite:////shared_workspace/mlflow_production.db --host 0.0.0.0 --port 5000
+    restart: always
+
+  
+  gnn_training:
+    image: large_scale_gnn:latest
+    container_name: gnn_training_worker
+    ipc: host
+    volumes:
+      - ./:/workspace
+      - ./data:/workspace/data
+      - db_data:/shared_workspace
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    depends_on:
+      - mlflow_ui
+    command: mlflow.tracking_uri="sqlite:////shared_workspace/mlflow_production.db"
+
+volumes:
+  db_data:
