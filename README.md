@@ -88,3 +88,5 @@ We were able to achive an validation F1 macro score of ~0.70 using a model that 
 Telemetry tracked via MLflow demonstrates excellent model generalization and stable convergence, with both training and validation F1-scores scaling up from their initial baselines to peak efficiently without showing signs of overfitting.
 
 The choice of the gnn model, skip connections and the asymetric loss function are all key to achieving this level of performance on a severly imbalanced dataset.
+
+<img width="1798" height="884" alt="image" src="https://github.com/user-attachments/assets/8ed0ecfa-e0b8-4749-a9b5-101490b2eb20" />
