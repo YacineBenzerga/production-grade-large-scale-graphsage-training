@@ -13,7 +13,7 @@ services:
   gnn_training:
     image: large_scale_gnn:latest
     container_name: gnn_training_worker
-    ipc: host
+    ipc: host ##this dataset is massive, make sure that you have about 30gb of ram before you enable this line
     volumes:
       - ./:/workspace
       - ./data:/workspace/data
