@@ -92,4 +92,5 @@ Telemetry tracked via MLflow demonstrates excellent model generalization and sta
 
 The choice of the gnn model, skip connections and the asymetric loss function are all key to achieving this level of performance on a severly imbalanced dataset.
 
-<img width="1798" height="884" alt="image" src="https://github.com/user-attachments/assets/8ed0ecfa-e0b8-4749-a9b5-101490b2eb20" />
+<img width="1805" height="628" alt="Screenshot from 2026-05-29 01-00-12" src="https://github.com/user-attachments/assets/68933072-40af-4e84-bca1-29ea6a7c80d0" />
+
