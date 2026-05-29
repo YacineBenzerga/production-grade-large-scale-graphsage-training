@@ -27,7 +27,9 @@ To construct an end-to-end containerized training pipeline optimized for rapid d
 
 Force a clean build of the custom GNN image to ensure all tracking dependencies and package layers are pristine:
 
+```bash
 docker compose build --no-cache
+```
 
 ### 2. Execute Training Options
 
@@ -41,23 +43,24 @@ docker compose up gnn_training
 
 Execute a multi-trial optimization study by overriding the worker runtime command. This tells Optuna to search for ideal configurations while saving parameters directly to your local tracking database:
 
-docker compose run --rm --entrypoint python gnn_training \
-  tune.py +optuna.n_trials=20 +optuna.study_name="graphsage_tuning" mlflow.tracking_uri="sqlite:////shared_workspace/mlflow_production.db"
-
+```bash
+docker compose run --rm gnn_training --config-name hpo
+```
 
 ### 3. Launch the Telemetry Dashboard (MLflow)
 
 Spin up the tracking UI server to analyze convergence trends, micro-F1 scores, or parameter importances in real-time:
 
+```bash
 docker compose up mlflow_ui
-
+```
 
 Open your browser and navigate to: http://localhost:5050
 
 
 ## Pipeline Monitoring & Telemetry
 
-The system channels all hardware and model statistics into a local SQLite database (mlflow_graphsage.db). The tracking dashboard provides visual tracking for:
+The system channels all hardware and model statistics into a local SQLite database (mlflow_production.db). The tracking dashboard provides visual tracking for:
 
 train/loss_epoch vs val/loss_epoch: Track network convergence and check for overfitting.
 
@@ -72,7 +75,7 @@ Optuna Parallel Coordinates: Visualize hyperparameter paths (learning rates, bat
 
 ### Docker Volume Mapping
 
-The database is kept outside isolated Docker volume structures and saved directly into your local workspace. This setup ensures that your benchmark logs will never be accidentally erased by running docker volume prune or clearing global container states.
+The database is kept outside isolated Docker volume structures and saved directly into a shared named voluems named "mlflow_production" which mounts to `/shared_workspace`. This setup ensures that your benchmark logs will never be accidentally erased by running docker volume prune or clearing global container states.
 
 ### GPU Reservations
 

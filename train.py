@@ -30,10 +30,7 @@ def main(cfg: DictConfig):
     )
 
     datamodule = AmazonProductsDataModule(
-        root_dir=cfg.data.root_dir,
-        batch_size=cfg.data.batch_size,
-        sizes=list(cfg.data.sizes),
-        num_workers=cfg.data.num_workers
+        cfg
     )
 
     engine = GraphSAGELightningEngine(model_cfg=cfg.model)

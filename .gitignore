@@ -1,3 +1,12 @@
 __pycache__/
 artifacts/
 .env
+
+outputs/
+*.ckpt
+**/checkpoints/
+
+data/AmazonProducts/processed/
+data/AmazonProducts/raw/feats.npy
+data/AmazonProducts/raw/adj_full.npz
+data/AmazonProducts/raw/*.json

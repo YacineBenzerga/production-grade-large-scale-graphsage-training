@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import pytorch_lightning as pl
 from torchmetrics.classification import MultilabelF1Score
-from src.model import GraphSAGE
+from src.model import GraphSAGEWithLabelCorrelation
 
 class AsymmetricLoss(nn.Module):
     def __init__(self, gamma_neg=4, gamma_pos=1, clip=0.05, eps=1e-8):
@@ -29,18 +29,17 @@ class AsymmetricLoss(nn.Module):
         return loss.mean()
 
 
-class GraphSAGELightningEngine(pl.LightningModule):  # <--- Make sure this is spelling-matched
+class GraphSAGELightningEngine(pl.LightningModule):
     def __init__(self, model_cfg: dict):
         super().__init__()
         self.save_hyperparameters()
         self.cfg = model_cfg
         
-        self.model = GraphSAGE(
-            in_channels=self.cfg.in_channels,
-            hidden_channels=self.cfg.hidden_channels,
-            out_channels=self.cfg.out_channels,
-            num_layers=self.cfg.num_layers,
-            dropout=self.cfg.dropout
+        self.model = GraphSAGEWithLabelCorrelation(
+            in_feats=self.cfg.in_channels,          
+            hidden_feats=self.cfg.hidden_channels,  
+            embedding_dim=self.cfg.get("embedding_dim", 128),  
+            num_classes=self.cfg.out_channels       
         )
         
         self.loss_fn = AsymmetricLoss(

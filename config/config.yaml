@@ -5,7 +5,7 @@ defaults:
 data:
   root_dir: "./data/AmazonProducts"
   batch_size: 1024
-  sizes: [15, 10]
+  num_neighbors: [15, 10]
   num_workers: 4
 
 trainer:

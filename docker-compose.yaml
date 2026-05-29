@@ -9,8 +9,10 @@ services:
     entrypoint: mlflow server --backend-store-uri sqlite:////shared_workspace/mlflow_production.db --host 0.0.0.0 --port 5000
     restart: always
 
-  
   gnn_training:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
     image: large_scale_gnn:latest
     container_name: gnn_training_worker
     ipc: host ##this dataset is massive, make sure that you have about 30gb of ram before you enable this line
