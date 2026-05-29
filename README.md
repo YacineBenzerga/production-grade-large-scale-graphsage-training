@@ -43,8 +43,19 @@ docker compose up gnn_training
 
 Execute a multi-trial optimization study by overriding the worker runtime command. This tells Optuna to search for ideal configurations while saving parameters directly to your local tracking database:
 
+Quickly run a single trial with Optuna's default settings:
 ```bash
-docker compose run --rm gnn_training --config-name hpo
+docker compose run --rm gnn_training \
+  +optuna=hpo \
+  optuna.n_trials=1 \
+  trainer.max_epochs=1 \
+  data.batch_size=15
+```
+
+or run a 10-trial study with Optuna's default settings:
+
+```bash
+docker compose run --rm gnn_training +optuna=hpo
 ```
 
 ### 3. Launch the Telemetry Dashboard (MLflow)
