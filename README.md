@@ -17,7 +17,7 @@ To construct an end-to-end containerized training pipeline optimized for rapid d
 
 ## Where to Start
 
-Start by taking a look at [the notebook](/notebooks/Large%20Scale%20Training%20on%20Unbalanced%20data%20using%20GraphSage.ipynb) or the [markdown version](/notebooks/Large%20Scale%20Training%20on%20Unbalanced%20data%20using%20GraphSage.md) if github is note rendering nbs correctly
+Start by taking a look at [the notebook](/notebooks/Large%20Scale%20Training%20on%20Unbalanced%20data%20using%20GraphSage.ipynb) or the [markdown version](/notebooks/Large%20Scale%20Training%20on%20Unbalanced%20data%20using%20GraphSage.md) if github is not rendering notebooks correctly
 
 ## Important Note
 
