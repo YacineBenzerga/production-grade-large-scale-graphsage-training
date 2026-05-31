@@ -15,9 +15,9 @@ To design a sophisticated Graph Neural Network (GNN) architecture capable of pro
 
 To construct an end-to-end containerized training pipeline optimized for rapid deployment and scaling.
 
-## Start with Notebook
+## Where to Start
 
-Start by taking a look at [notebook] (https://github.com/YacineBenzerga/production-grade-large-scale-graphsage-training/blob/main/notebooks/Large%20Scale%20Training%20on%20Unbalanced%20data%20using%20GraphSage.md)
+Start by taking a look at [the notebook](/notebooks/Large%20Scale%20Training%20on%20Unbalanced%20data%20using%20GraphSage.ipynb) or the [markdown version](/notebooks/Large%20Scale%20Training%20on%20Unbalanced%20data%20using%20GraphSage.md) if github is note rendering nbs correctly
 
 ## Important Note
 
